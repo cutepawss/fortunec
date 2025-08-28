@@ -1,5 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import fortunes from "../../../public/fortunes-en.json";
+import { promises as fs } from "fs";
+import path from "path";
+
+async function loadFortunes() {
+  const filePath = path.join(process.cwd(), "public", "fortunes-en.json");
+  const buf = await fs.readFile(filePath, "utf-8");
+  return JSON.parse(buf);
+}
 
 function todaySeed() {
   const d = new Date();
@@ -17,6 +24,7 @@ function hash(str: string) {
 }
 
 export async function GET(req: NextRequest) {
+  const fortunes = await loadFortunes();
   const url = new URL(req.url);
   const fid = url.searchParams.get("fid") || "guest";
   const day = todaySeed();
@@ -25,10 +33,10 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
+  const fortunes = await loadFortunes();
   const url = new URL(req.url);
   const reroll = url.searchParams.get("reroll") === "1";
   if (!reroll) return NextResponse.json({ ok: true });
-  // simple random reroll
   const idx = Math.floor(Math.random() * fortunes.length);
   return NextResponse.json(fortunes[idx]);
 }
