@@ -16,20 +16,50 @@ html, body {
 }
 
 body {
-  /* geçici fallback arka plan (inline SVG varsa yine altta kalır) */
+  /* Üstte hafif karartma + altta illüstrasyon (tek dosya, data-URI) */
   background:
-    radial-gradient(1000px 600px at 20% -10%, #0b1220 0%, transparent 60%),
-    radial-gradient(1200px 800px at 120% 20%, #122038 0%, transparent 60%),
-    linear-gradient(135deg, var(--bg-a), var(--bg-b));
-  color: var(--fg);
-}
+    radial-gradient(1000px 600px at 20% -10%, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 60%),
+    linear-gradient(135deg, rgba(15,23,42,0.35), rgba(30,41,59,0.35)),
+    url('data:image/svg+xml;utf8,\
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 2560">\
+  <defs>\
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">\
+      <stop offset="0%25" stop-color="%231f3b3a"/><stop offset="35%25" stop-color="%231a6b5a"/><stop offset="65%25" stop-color="%23104761"/><stop offset="100%25" stop-color="%230b1424"/>\
+    </linearGradient>\
+    <radialGradient id="orb" cx="42%25" cy="38%25" r="70%25">\
+      <stop offset="0%25" stop-color="%23fbfeff"/><stop offset="45%25" stop-color="%23eaf5ff"/><stop offset="100%25" stop-color="%23c6dcff"/>\
+    </radialGradient>\
+  </defs>\
+  <!-- Gökyüzü -->\
+  <rect width="1440" height="2560" fill="url(%23sky)"/>\
+  <!-- Stand -->\
+  <g transform="translate(720,1710)">\
+    <rect x="-170" y="16" width="340" height="96" rx="28" fill="%23b07a25"/>\
+    <rect x="-150" y="10" width="300" height="26" rx="12" fill="%23ffde8e" opacity="0.45"/>\
+  </g>\
+  <!-- Kristal küre -->\
+  <g transform="translate(720,1580)">\
+    <circle cx="0" cy="0" r="230" fill="url(%23orb)"/>\
+    <circle cx="0" cy="0" r="230" fill="none" stroke="%23ffffff" stroke-opacity="0.35" stroke-width="4"/>\
+  </g>\
+  <!-- Falcı silüeti -->\
+  <g transform="translate(720,1200)" fill="%230a1224">\
+    <path d="M-140,-290 C-210,-260 -210,-180 -140,-150 C-100,-60 -20,-40 0,-40 C20,-40 100,-60 140,-150 C210,-180 210,-260 140,-290 C100,-330 40,-350 0,-350 C-40,-350 -100,-330 -140,-290 Z"/>\
+    <circle cx="-95" cy="-360" r="42"/><circle cx="95" cy="-360" r="42"/>\
+  </g>\
+  <!-- 3 tarot kartı -->\
+  <g transform="translate(720,1900)">\
+    <rect x="-76" y="-120" width="152" height="216" rx="16" fill="%2316325a" stroke="%233e6aa8" stroke-width="3"/>\
+    <rect x="-260" y="-100" width="152" height="216" rx="16" fill="%2316325a" stroke="%233e6aa8" stroke-width="3"/>\
+    <rect x="108" y="-100" width="152" height="216" rx="16" fill="%2316325a" stroke="%233e6aa8" stroke-width="3"/>\
+  </g>\
+</svg>');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 
-.container {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 24px;
-  display: grid;
-  gap: 16px;
+  color: var(--fg);
 }
 
 .card {
