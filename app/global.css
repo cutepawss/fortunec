@@ -76,3 +76,16 @@ button:active { transform: translateY(1px) scale(0.99); }
   background: rgba(255,255,255,0.04);
   font-size: 12px;
 }
+
+/* Full-screen inline SVG background (layout.tsx içindeki <svg class="app-bg"> için) */
+.app-bg{
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+
+}
