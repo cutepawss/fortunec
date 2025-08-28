@@ -16,9 +16,11 @@ html, body {
 }
 
 body {
-  background: radial-gradient(1000px 600px at 20% -10%, #0b1220 0%, transparent 60%),
-              radial-gradient(1200px 800px at 120% 20%, #122038 0%, transparent 60%),
-              linear-gradient(135deg, var(--bg-a), var(--bg-b));
+  /* geçici fallback arka plan (inline SVG varsa yine altta kalır) */
+  background:
+    radial-gradient(1000px 600px at 20% -10%, #0b1220 0%, transparent 60%),
+    radial-gradient(1200px 800px at 120% 20%, #122038 0%, transparent 60%),
+    linear-gradient(135deg, var(--bg-a), var(--bg-b));
   color: var(--fg);
 }
 
@@ -49,7 +51,11 @@ h1 {
   font-size: 13px;
 }
 
-.btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
 
 button {
   -webkit-tap-highlight-color: transparent;
@@ -78,14 +84,11 @@ button:active { transform: translateY(1px) scale(0.99); }
 }
 
 /* Full-screen inline SVG background (layout.tsx içindeki <svg class="app-bg"> için) */
-.app-bg{
+.app-bg {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
   z-index: -1;
   pointer-events: none;
-}
-
-
 }
