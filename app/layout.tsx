@@ -27,9 +27,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={outfit.className}>
-        {/* --- ARKA PLAN SAHNESİ (z-index:0) --- */}
-        <div className="stage">
-          <svg viewBox="0 0 1440 2560" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" aria-hidden>
+        {/* ARKA PLAN SAHNESİ */}
+        <div className="stage" aria-hidden>
+          <svg viewBox="0 0 1440 2560" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
             <defs>
               <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#1f3b3a" />
@@ -75,11 +75,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </svg>
         </div>
 
-        {/* --- UYGULAMA İÇERİĞİ (z-index:1) --- */}
+        {/* İÇERİK */}
         <div className="app-content">{children}</div>
       </body>
     </html>
   );
 }
-
 
