@@ -11,7 +11,7 @@ async function loadFortunes() {
 function todaySeed() {
   const d = new Date();
   const day = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
-  return day.toISOString().slice(0,10); // YYYY-MM-DD
+  return day.toISOString().slice(0,10);
 }
 
 function hash(str: string) {
